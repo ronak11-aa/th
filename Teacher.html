@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Timetable </title>
+  <style>
+    /* Existing styles remain unchanged */
+    /* ... (your existing CSS styles) ... */
+
+    /* Additional styles for the timetable */
+    .timetable {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .timetable th, .timetable td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .timetable th {
+      background-color: var(--light);
+      font-weight: 600;
+    }
+
+    .timetable td {
+      height: 60px;
+      vertical-align: middle;
+    }
+
+    /* Print button styling */
+    .print-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .print-btn:hover {
+      background-color: #2980b9;
+    }
+
+    /* Hide print button when printing */
+    @media print {
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Dr. Shina Goshina Timetable </h1>
+    </div>
+  </header>
+    <!-- Timetable Tab -->
+    <div id="timetable" class="tab-content">
+      <h2>Timetable</h2>
+      
+      <!-- Print Button -->
+      <button class="print-btn" onclick="printTimetable()">Print Timetable</button>
+
+      <table class="timetable" id="timetableTable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09:00 - 10:00</td>
+            <td>LAB 1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td>Room 7</td>
+            <td>Room 9</td>
+            <td>-</td>
+            <td>LAB1</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td>Room 4</td>
+            <td>-</td>
+            <td>Room 4</td>
+            <td>-</td>
+            <td>Room5</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>12:00 - 01:00</td>
+            <td>Lunch Break</td>
+            <td>Lunch Break</td>
+            <td>Lunch Break</td>
+            <td>Lunch Break</td>
+            <td>Lunch Break</td>
+            <td>Lunch Break</td>
+          </tr>
+          <tr>
+            <td>01:00 - 02:00</td>
+            <td>-</td>
+            <td>Room 1</td>
+            <td>-</td>
+            <td>Room 7</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>02:00 - 03:00</td>
+            <td>Room 8</td>
+            <td>Room 7</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Room 7</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>03:00 - 04:00</td>
+            <td>Room 6</td>
+            <td>-</td>
+            <td>LAB1</td>
+            <td>-</td>
+            <td>Room 2</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Other tabs remain unchanged -->
+    <!-- ... (your existing tab contents) ... -->
+  </div>
+
+  <script>
+    // JavaScript to handle tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to the clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Function to print the timetable
+    function printTimetable() {
+      let printWindow = window.open('', '', 'width=800,height=600');
+      printWindow.document.write('<html><head><title>Print Timetable</title>');
+      printWindow.document.write('<style>');
+      printWindow.document.write('table { width: 100%; border-collapse: collapse; margin-top: 20px; }');
+      printWindow.document.write('th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }');
+      printWindow.document.write('th { background-color: #ecf0f1; font-weight: 600; }');
+      printWindow.document.write('td { height: 60px; vertical-align: middle; }');
+      printWindow.document.write('</style></head><body>');
+      printWindow.document.write('<h2>Teacher Timetable</h2>');
+      printWindow.document.write(document.getElementById('timetableTable').outerHT-);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      printWindow.print();
+    }
+  </script>
+</body>
+</html>
